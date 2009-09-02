@@ -1,0 +1,26 @@
+<module>
+  <outputs> 
+    <output>
+      <name>uitgangA1</name>
+      <posX>26.0</posX>
+      <posY>45.0</posY>
+    </output>
+    <output>
+      <name>uitgangA2</name>
+      <posX>26.0</posX>
+      <posY>68.0</posY>
+    </output>
+  </outputs>
+  <inputs>
+  </inputs>
+  <ledx>45</ledx>
+  <ledy>56</ledy>
+  <vertical>true</vertical>
+  <eventX>21</eventX>
+  <eventY>118</eventY>
+  <eventWidth>24</eventWidth>
+  <eventHeight>24</eventHeight>
+  <imageIcon>/figures/lijst/lichtsensor.jpg</imageIcon>
+  <image>/figures/workspace/lichtsensor.jpg</image>
+  <name>lichtsensor</name>
+</module>

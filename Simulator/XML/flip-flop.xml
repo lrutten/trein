@@ -1,0 +1,37 @@
+<module>
+  <outputs>
+    <output> 
+      <name>uitgangD1</name>
+      <posX>26.0</posX>
+      <posY>47.5</posY>
+    </output>
+    <output> 
+      <name>uitgangD2</name>
+      <posX>26.0</posX>
+      <posY>68.0</posY>
+    </output>
+  </outputs>
+  <inputs>
+    <input>
+      <name>ingangA_set</name>
+      <posX>10.5</posX>
+      <posY>146.5</posY>
+    </input>
+    <input>
+      <name>ingangB_reset</name>
+      <posX>25.0</posX>
+      <posY>146.5</posY>
+    </input>
+    <input>
+      <name>ingangC_flip</name>
+      <posX>40.0</posX>
+      <posY>146.5</posY>
+    </input>
+  </inputs>
+  <ledx>44</ledx>
+  <ledy>56</ledy>
+  <vertical>true</vertical>
+  <imageIcon>/figures/lijst/flip-flop.jpg</imageIcon>
+  <image>/figures/workspace/flip-flop.jpg</image>
+  <name>flip-flop</name>
+</module>

@@ -1,0 +1,22 @@
+<module>
+  <outputs> 
+    <output>
+      <name>uitgangA1</name>
+      <posX>28.0</posX>
+      <posY>38.0</posY>
+    </output>
+    <output>
+      <name>uitgangA2</name>
+      <posX>9.2</posX>
+      <posY>38.0</posY>
+    </output>
+  </outputs>
+  <inputs>
+  </inputs>
+  <ledx>50</ledx>
+  <ledy>37</ledy>
+  <vertical>true</vertical>
+  <imageIcon>/figures/lijst/klok.jpg</imageIcon>
+  <image>/figures/workspace/klok.jpg</image>
+  <name>klok</name>
+</module>

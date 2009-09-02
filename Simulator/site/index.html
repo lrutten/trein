@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <h1>Simulator</h1>
+
+    <p>
+      Start hier: <a href="simulator.jnlp">simulator.jnlp</a>
+    </p>
+    
+    <h1>Jar archief</h1>
+
+    <p>
+      Staat hier: <a href="simulator.jar">simulator.jar</a>
+    </p>
+    <p>
+      Start met: java -jar simulator.jar
+    </p>
+
+    <h1>Broncode</h1>
+    
+    <p>
+      tar archief: <a href="simulator-484.tgz">simulator.tgz</a>
+    </p>
+    
+    <h1>Logboek</h1>
+
+    <h2> 3/ 7/2008 Revisie 484</h2>
+    <ul>
+       <li>
+         De wachtmodule werkt nu zoals gevraagd. De uitgang gaat meteen hoog bij
+         een stijgende flank aan de ingang en blijft 10 s hoog. De module is niet
+         hertriggerbaar. De vorige versie van de wachtmodule bestaat intern nog
+         als de klasse WachtLijn. Deze module vertraagt elke event aan de ingang
+         met 10 s. 
+       </li>
+    </ul>
+
+    <h2>25/ 6/2008 Revisie 479</h2>
+    <ul>
+       <li>
+         Alle figuren worden geladen.
+       </li>
+    </ul>
+
+    <h2>24/ 6/2008 Revisie 478</h2>
+    <ul>
+       <li>
+         Webstart werkt nu. Alle figuren en xml bestanden zijn in het jar archief opgenomen. Alle
+         paden zijn aangepast en starten nu met een '/'.
+       </li>
+       <li>
+         Het was nodig om simulator.jar te tekenen en deze met volledige rechten uit te voeren. 
+         Dit is de enige manier om de xstream bibliotheek te doen werken. Deze handtekening is een zes maanden geldig.
+       </li>
+       <li>
+         Enkele bestandsnamen van figuren hadden een extensie in hoofdletters. Dit is omgezet in
+         kleine letters.
+       </li>
+    </ul>
+  <body>
+</html>

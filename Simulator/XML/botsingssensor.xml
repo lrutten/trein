@@ -1,0 +1,26 @@
+<module>
+  <outputs> 
+    <output>
+      <name>uitgangA1</name>
+      <posX>42.0</posX>
+      <posY>39</posY>
+    </output>
+    <output>
+      <name>uitgangA2</name>
+      <posX>42.0</posX>
+      <posY>58.5</posY>
+    </output>
+  </outputs>
+  <inputs>
+  </inputs>
+  <ledx>41</ledx>
+  <ledy>30</ledy>
+  <vertical>false</vertical>
+  <eventX>23.5</eventX>
+  <eventY>125</eventY>
+  <eventWidth>15.5</eventWidth>
+  <eventHeight>30.5</eventHeight>
+  <imageIcon>/figures/lijst/botsingssensor.jpg</imageIcon>
+  <image>/figures/workspace/botsingssensor.jpg</image>
+  <name>botsingssensor</name>
+</module>

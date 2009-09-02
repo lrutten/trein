@@ -1,0 +1,26 @@
+<module>
+  <outputs>
+    <output> 
+      <name>uitgangA1</name>
+      <posX>27.0</posX>
+      <posY>33.0</posY>
+    </output>
+    <output> 
+      <name>uitgangA2</name>
+      <posX>27.0</posX>
+      <posY>68.0</posY>
+    </output>
+  </outputs>
+  <inputs>
+  </inputs>
+  <ledx>42</ledx>
+  <ledy>50</ledy>
+  <vertical>true</vertical>
+  <eventX>27</eventX>
+  <eventY>129</eventY>
+  <eventWidth>12</eventWidth>
+  <eventHeight>12</eventHeight>
+  <imageIcon>/figures/lijst/drukknop.jpg</imageIcon>
+  <image>/figures/workspace/drukknop.jpg</image>
+  <name>drukknop</name>
+</module>

@@ -1,0 +1,17 @@
+<module>
+  <outputs>
+  </outputs>
+  <inputs>
+    <input>
+      <name>ingangA</name>
+      <posX>26.5</posX>
+      <posY>132.0</posY>
+    </input>
+  </inputs>
+  <ledx>41</ledx>
+  <ledy>103</ledy>
+  <vertical>true</vertical>
+  <imageIcon>/figures/lijst/zoemer.jpg</imageIcon>
+  <image>/figures/workspace/zoemer.jpg</image>
+  <name>zoemer</name>
+</module>

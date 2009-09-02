@@ -1,0 +1,26 @@
+<module>
+  <outputs>
+    <output>
+      <name>uitgangA1</name>
+      <posX>27.0</posX>
+      <posY>33.0</posY>
+    </output>
+    <output>
+      <name>uitgangA2</name>
+      <posX>27.0</posX>
+      <posY>68.0</posY>
+    </output>
+  </outputs>
+  <inputs>
+  </inputs>
+  <ledx>42</ledx>
+  <ledy>48</ledy>
+  <vertical>true</vertical>
+  <eventX>22</eventX>
+  <eventY>119</eventY>
+  <eventWidth>23</eventWidth>
+  <eventHeight>37</eventHeight>
+  <imageIcon>/figures/lijst/schakelaar.jpg</imageIcon>
+  <image>/figures/workspace/schakelaar.jpg</image>
+  <name>schakelaar</name>
+</module>

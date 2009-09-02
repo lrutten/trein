@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<jnlp spec="1.0" codebase="http://ontwerpen1.khlim.be/~lrutten/simulator/"
+   href="simulator.jnlp">
+   <information>
+      <title>Simulator</title>
+      <vendor>KHLim</vendor>
+   </information>
+   <resources>
+      <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+      <jar href="simulator.jar"/>
+   </resources>
+   <application-desc main-class="be.khlim.trein.gui.Simulator"/>
+   <security>
+     <all-permissions/>
+   </security>
+</jnlp>
+

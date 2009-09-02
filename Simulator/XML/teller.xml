@@ -1,0 +1,27 @@
+<module>
+  <outputs> 
+    <output>
+      <name>uitgangC</name>
+      <posX>25.0</posX>
+      <posY>41.5</posY>
+    </output>
+  </outputs>
+  <inputs>
+  	<input>
+      <name>ingangA_start</name>
+      <posX>7.5</posX>
+      <posY>115.5</posY>
+    </input>
+    <input>
+      <name>ingangB_klok</name>
+      <posX>7.2</posX>
+      <posY>76.5</posY>
+    </input>
+  </inputs>
+  <ledx>40.5</ledx>
+  <ledy>50.5</ledy>
+  <vertical>true</vertical>
+  <imageIcon>/figures/lijst/teller.jpg</imageIcon>
+  <image>/figures/workspace/teller.jpg</image>
+  <name>teller</name>
+</module>

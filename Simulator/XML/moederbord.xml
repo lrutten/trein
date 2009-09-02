@@ -1,0 +1,18 @@
+<module>
+  <outputs>
+    <output>
+      <name>uitgangA_voeding</name>
+      <posX>34.5</posX>
+      <posY>31</posY>
+    </output>
+    <output>
+     <name>uitgangB_grond</name>
+      <posX>105.5</posX>
+      <posY>32</posY>
+    </output>
+  </outputs>
+  <inputs>
+  </inputs>
+  <image>/figures/workspace/moederbord.jpg</image>
+  <name>moederbord</name>
+</module>

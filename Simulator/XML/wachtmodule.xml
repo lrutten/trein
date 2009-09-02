@@ -1,0 +1,22 @@
+<module>
+  <outputs>
+    <output>
+      <name>uitgangB</name>
+      <posX>26.0</posX>
+      <posY>44.0</posY>
+    </output>
+  </outputs>
+  <inputs>
+    <input>
+      <name>ingangA</name>
+      <posX>27.0</posX>
+      <posY>131.0</posY>
+    </input>
+  </inputs>
+  <ledx>25</ledx>
+  <ledy>65</ledy>
+  <vertical>false</vertical>
+  <imageIcon>/figures/lijst/wachtmodule.jpg</imageIcon>
+  <image>/figures/workspace/wachtmodule.jpg</image>
+  <name>wachtmodule</name>
+</module>

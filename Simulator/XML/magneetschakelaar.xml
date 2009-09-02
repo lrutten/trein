@@ -1,0 +1,26 @@
+<module>
+  <outputs>
+    <output>
+      <name>uitgangA1</name>
+      <posX>26.0</posX>
+      <posY>43.0</posY>
+    </output>
+    <output>
+      <name>uitgangA2</name>
+      <posX>26.0</posX>
+      <posY>65.0</posY>
+    </output>
+  </outputs>
+  <inputs>
+  </inputs>
+  <ledx>40</ledx>
+  <ledy>51</ledy>
+  <vertical>true</vertical>
+  <eventX>20</eventX>
+  <eventY>98</eventY>
+  <eventWidth>23</eventWidth>
+  <eventHeight>20</eventHeight>
+  <imageIcon>/figures/lijst/reed-switch.jpg</imageIcon>
+  <image>/figures/workspace/reed-switch.jpg</image>
+  <name>magneetschakelaar</name>
+</module>

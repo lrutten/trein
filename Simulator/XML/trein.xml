@@ -1,0 +1,28 @@
+<module>
+  <outputs>
+  </outputs>
+  <inputs>
+    <input> 
+      <name>ingangA_aan_uit</name>
+      <posX>133</posX>
+      <posY>10</posY>
+    </input>
+    <input>
+      <name>ingangB_voor_achter</name>
+      <posX>133</posX>
+      <posY>23</posY>
+    </input>
+    <input>
+      <name>ingangC_traag_snel</name>
+      <posX>133</posX>
+      <posY>36</posY>
+    </input>
+    <input>
+      <name>ingangD_licht</name>
+      <posX>0</posX>
+      <posY>40</posY>
+    </input>
+  </inputs>
+  <image>/figures/workspace/trein.jpg</image>
+  <name>trein</name>
+</module>

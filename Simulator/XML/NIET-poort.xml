@@ -1,0 +1,32 @@
+<module>
+  <outputs>
+    <output>
+      <name>uitgangB1</name>
+      <posX>27.0</posX>
+      <posY>46.0</posY>
+    </output>
+    <output>
+     <name>uitgangB2</name>
+      <posX>27.0</posX>
+      <posY>67.0</posY>
+    </output>
+  </outputs>
+  <inputs>
+    <input>
+      <name>ingangA1</name>
+      <posX>28.0</posX>
+      <posY>125.0</posY>
+    </input>
+    <input>
+      <name>ingangA2</name>
+      <posX>28.0</posX>
+      <posY>145.5</posY>
+    </input>
+  </inputs>
+  <ledx>42</ledx>
+  <ledy>55</ledy>
+  <vertical>true</vertical>
+  <imageIcon>/figures/lijst/NIET-poort.jpg</imageIcon>
+  <image>/figures/workspace/NIET-poort.jpg</image>
+  <name>NIET-poort</name>
+</module>
