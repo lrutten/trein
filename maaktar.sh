@@ -1,1 +1,1 @@
-tar -cvzf simulator-484.tgz --exclude .svn Simulator/*
+tar -cvzf simulator-2379.tgz --exclude .svn Simulator/*
