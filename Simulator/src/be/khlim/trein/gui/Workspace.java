@@ -265,8 +265,12 @@ public class Workspace{
 			y1 = node1.getFullBoundsReference().getCenter2D().getY() + node1.getParent().getFullBounds().getOrigin().getY();
 			x2 = node2.getFullBoundsReference().getCenter2D().getX() + node2.getParent().getFullBounds().getOrigin().getX();
 			y2 = node2.getFullBoundsReference().getCenter2D().getY() + node2.getParent().getFullBounds().getOrigin().getY();
+			
+			/*
 			Line2D line = new Line2D.Double(x1,y1,x2,y2);
 			links.get(i).getPPath().setPathTo(line);
+       */
+			setPolyLine(links.get(i).getPPath(), (float)x1, (float)y1, (float)x2, (float)y2);
 			}
 		}
 	
@@ -521,6 +525,60 @@ public class Workspace{
 		};
 	}
 
+	public void setPolyLine(PPath ppa, float x1, float y1, float x2, float y2)
+	{
+		float dx;
+		float dy;
+		if (x1 > x2)
+		{
+		    dx = x1 - x2;
+		}
+		else
+		{
+		    dx = x2 - x1;
+		}
+
+		if (y1 > y2)
+		{
+		    dy = y1 - y2;
+		}
+		else
+		{
+		    dy = y2 - y1;
+		}
+
+	  float xa;
+		float ya;
+		float xb;
+		float yb;
+		
+		if (dx > dy)
+		{
+		    xa = (x1 + x2)/2;
+		    ya = y1;
+		    xb = xa;
+		    yb = y2;
+		}
+		else
+		{
+		    xa = x1;
+		    ya = (y1 + y2)/2;
+		    xb = x2;
+		    yb = ya;
+		}
+/*
+		link.moveTo(x1, y1);
+		link.lineTo(xa, ya);
+		link.lineTo(xb, yb);
+		link.lineTo(x2, y2);
+ */
+		ppa.setPaint(new Color(0,0,0,0));
+		ppa.setStrokePaint(Color.black);
+    float xtab[] = { x1, xa, xb, x2 };
+    float ytab[] = { y1, ya, yb, y2 };
+		ppa.setPathToPolyline(xtab, ytab);
+	}
+
 	/**
 	 * Draws a line between two {@link Connection Connections}
 	 * This method also checks if the Link need zo be put in a {@link LinkSet LinkSet}
@@ -534,11 +592,14 @@ public class Workspace{
 		x2 = (float)(c2.getFullBoundsReference().getCenter2D().getX() + c2.getParent().getFullBounds().getOrigin().getX());
 		y2 = (float)(c2.getFullBoundsReference().getCenter2D().getY() + c2.getParent().getFullBounds().getOrigin().getY());
 		
-		final PPath link = PPath.createLine(x1, y1, x2, y2);
-		link.setPaint(Color.red);
-		layer.addChild(link);
-		Link lnk = new Link(link, c1, c2);
+		//final PPath link = PPath.createLine(x1, y1, x2, y2);
+		final PPath ppa = new PPath();
+    setPolyLine(ppa, x1, y1, x2, y2);
+    
+		layer.addChild(ppa);
+		Link lnk = new Link(ppa, c1, c2);
 		links.add(lnk);
+
 		LinkSet ls1 = null;
 		LinkSet ls2 = null;
 		for(LinkSet ls: linksets){
@@ -561,7 +622,7 @@ public class Workspace{
 			ls.addLink(lnk);
 			linksets.add(ls);
 		}
-		link.addInputEventListener(new PBasicInputEventHandler() {	
+		ppa.addInputEventListener(new PBasicInputEventHandler() {	
 			
 			public void mousePressed(PInputEvent e){
 				if(removeline&&e.getButton()==1){
@@ -572,7 +633,7 @@ public class Workspace{
 					c2.setPaint(Color.lightGray);
 				}
 				else if(e.getButton()==3){
-					link.setTransparency((float)1);	
+					ppa.setTransparency((float)1);	
 					c1.setPaint(Color.lightGray);
 					c2.setPaint(Color.lightGray);
 				}
@@ -580,7 +641,7 @@ public class Workspace{
 			
 			public void mouseEntered(PInputEvent e){                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
 				if(removeline){
-					link.setTransparency((float)0.5);
+					ppa.setTransparency((float)0.5);
 					c1.setPaint(Color.green);
 					c2.setPaint(Color.green);
 				}
@@ -588,7 +649,7 @@ public class Workspace{
 			
 			public void mouseExited(PInputEvent e){
 				if(removeline){
-					link.setTransparency((float)1);	
+					ppa.setTransparency((float)1);	
 					c1.setPaint(Color.lightGray);
 					c2.setPaint(Color.lightGray);
 				}
