@@ -1,5 +1,12 @@
 package be.khlim.trein.gui;
 
+
+/*
+  $Date$ 
+  $Revision$ 
+  $Author$
+ */
+ 
 //imports necessary for the modules
 import be.khlim.trein.modules.*;
 import be.khlim.trein.modules.conf.*;
@@ -37,6 +44,7 @@ import java.beans.PropertyVetoException;
 import edu.umd.cs.piccolo.PCanvas;
 import edu.umd.cs.piccolo.PCamera;
 import edu.umd.cs.piccolo.PNode;
+import edu.umd.cs.piccolo.PLayer;
 import edu.umd.cs.piccolo.event.PDragEventHandler;
 import edu.umd.cs.piccolo.nodes.PPath;
 import edu.umd.cs.piccolo.event.PInputEvent;
@@ -147,8 +155,13 @@ public class Workspace{
 	public JInternalFrame getFrame(){
 		return frame;
 	}
-	
-	/**
+
+   public void print()
+   {
+      layer.print();
+   }
+
+   /**
 	 * read module according to a given configuration module
 	 * and place it on point p
 	 * @param cmod The {@link ConfModule configuration module}

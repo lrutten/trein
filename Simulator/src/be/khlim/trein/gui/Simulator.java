@@ -1,5 +1,11 @@
 package be.khlim.trein.gui;
 
+/*
+  $Date$ 
+  $Revision$ 
+  $Author$
+ */
+ 
 // imports necessary to read the XML files
 import java.io.File;
 import java.io.FileInputStream;
@@ -57,7 +63,7 @@ public class Simulator extends JFrame
 	private JInternalFrame frame; // internal frame to show list of modules
 	private JInternalFrame frameB;// internal frame for buttons
 	private int framenr=0;
-	private int workspace;
+	private int activeWorkspace = 0;
 	private static Simulator main;
 	
 	private ConfModule train;
@@ -125,12 +131,25 @@ public class Simulator extends JFrame
 				saveAs();
 			}
 		});
+
 		JMenuItem sluiten = new JMenuItem("Sluiten");
 		sluiten.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent evt)
 			{ System.exit(0); }
 		});
+
+		JMenuItem afdrukken = new JMenuItem("Afdrukken");
+		afdrukken.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent evt)
+			{ 
+			   System.out.println("Afdrukken");
+			   print();
+			}
+		});
+
+
 		JMenuItem drawLM = new JMenuItem("Teken lijn");
 		drawLM.setAccelerator(KeyStroke.getKeyStroke("F5"));
 		drawLM.addActionListener(new ActionListener()
@@ -209,6 +228,7 @@ public class Simulator extends JFrame
 			bestand.addSeparator();
 			bestand.add(opslaan);
 			bestand.add(opslaanAls);
+			bestand.add(afdrukken);
 			bestand.addSeparator();
 			bestand.add(sluiten);
 		JMenu bewerken = new JMenu("Bewerken");
@@ -304,34 +324,52 @@ public class Simulator extends JFrame
 	 * Sets drawline true in the active workspace
 	 */
 	public void drawLine(){
-		workspaces.get(workspace).removeActions();
-		workspaces.get(workspace).setDrawLine(true);
+		workspaces.get(activeWorkspace).removeActions();
+		workspaces.get(activeWorkspace).setDrawLine(true);
 	}
 	
 	/**
 	 * Sets removeline true in the active workspace
 	 */
 	public void removeLine(){
-		workspaces.get(workspace).removeActions();
-		workspaces.get(workspace).setRemoveLine(true);
+		workspaces.get(activeWorkspace).removeActions();
+		workspaces.get(activeWorkspace).setRemoveLine(true);
 	}
 	
 	/**
 	 * Sets dremovemodule true in the active workspace
 	 */
 	public void removeModule(){
-		workspaces.get(workspace).removeActions();
-		workspaces.get(workspace).setRemoveModule(true);
+		workspaces.get(activeWorkspace).removeActions();
+		workspaces.get(activeWorkspace).setRemoveModule(true);
 	}
 	
 	/**
 	 * Sets the number of the active workspace
 	 * @param i The number of the last active workspace
 	 */
-	public void setWorkspace(int i){
-		workspace = i;
+	public void setWorkspace(int i)
+	{
+		activeWorkspace = i;
 	}
-	
+
+
+   public void print()
+   {
+      System.out.println("workspace:" + activeWorkspace);
+      Workspace active = null;
+
+      if (workspaces.size() > 0)
+      {
+         active = workspaces.get(activeWorkspace);
+         if (active != null)
+         {
+            System.out.println("print workspace");
+            active.print();
+         }
+      }
+  }
+
 	public void cascade(){
 		for(int i=0; i<workspaces.size(); i++){
 			workspaces.get(i).setFrame(i*15, 60+(15*i-10), 700, 500);
@@ -504,11 +542,11 @@ public class Simulator extends JFrame
 								for (int k = 0; k < workspaces.size(); k++){
 									workspaces.get(k).removeActions();
 								}
-								workspaces.get(workspace).setDrawModule(true);
-								workspaces.get(workspace).setSelection(modules.get(j));
-								workspaces.get(workspace).setTempImage();
+								workspaces.get(activeWorkspace).setDrawModule(true);
+								workspaces.get(activeWorkspace).setSelection(modules.get(j));
+								workspaces.get(activeWorkspace).setTempImage();
 								for (int k = 0; k < workspaces.size(); k++){
-									if(k!=workspace){
+									if(k!=activeWorkspace){
 										workspaces.get(k).setDrawModule(false);
 									}
 								}
@@ -548,9 +586,9 @@ public class Simulator extends JFrame
 	 * Saves a {@link Workspace Workspace}
 	 */
 	public void save(){
-		if (workspaces.get(workspace).getFilename() == null){
+		if (workspaces.get(activeWorkspace).getFilename() == null){
 			saveAs();
-		} else { write(workspaces.get(workspace).getFilename());}
+		} else { write(workspaces.get(activeWorkspace).getFilename());}
 	}
 	
 	/**
@@ -568,7 +606,7 @@ public class Simulator extends JFrame
 		    File theFile = chooser.getSelectedFile();
 		    if(theFile != null) {
 		    	if(theFile.isDirectory()) {
-		    		filename = chooser.getSelectedFile().getAbsolutePath() + "naamloos" + workspace + ".txt";
+		    		filename = chooser.getSelectedFile().getAbsolutePath() + "naamloos" + activeWorkspace + ".txt";
 		    	} else {
 		    		if (Utils.getExtension(chooser.getSelectedFile()).equals(Utils.txt)){
 		    				filename = chooser.getSelectedFile().getAbsolutePath();	
@@ -577,7 +615,7 @@ public class Simulator extends JFrame
 		    }
 		} 	
 		if (filename != null){
-			workspaces.get(workspace).setFilename(filename);
+			workspaces.get(activeWorkspace).setFilename(filename);
 			write(filename);
 		}
 	}
@@ -589,15 +627,15 @@ public class Simulator extends JFrame
 	public void write(String filename){
 		FileOutputStream out; // declare a file output object
 		PrintStream p; // declare a print stream object
-		workspaces.get(workspace).setTitle(filename);	
+		workspaces.get(activeWorkspace).setTitle(filename);	
 		try{
 			out = new FileOutputStream(filename);
 			// Connect print stream to the output stream
 			p = new PrintStream(out);
 			double x,y;
 			int index, index1, index2;
-			ArrayList<Module> modules = workspaces.get(workspace).getModules();
-			ArrayList<Link> links = workspaces.get(workspace).getLinks();
+			ArrayList<Module> modules = workspaces.get(activeWorkspace).getModules();
+			ArrayList<Link> links = workspaces.get(activeWorkspace).getLinks();
 			for(int i=0;i<modules.size();i++){
 				x = modules.get(i).getFullBoundsReference().getX();
 				y = modules.get(i).getFullBoundsReference().getY();
@@ -866,7 +904,7 @@ public class Simulator extends JFrame
 	 */
 	public void simulate()
    {
-		new Run(workspaces.get(workspace).getModules(), workspaces.get(workspace).getLinks());
+		new Run(workspaces.get(activeWorkspace).getModules(), workspaces.get(activeWorkspace).getLinks());
 	}
 	
 	/**

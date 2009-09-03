@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- WARNING: Eclipse auto-generated file.
-              Any modifications will be overwritten.
-              To include a user specific buildfile here, simply create one in the same
-              directory with the processing instruction <?eclipse.ant.import?>
-              as the first entry and export the buildfile again. -->
+
+<!-- 
+   $Date$
+   $Revision$
+   $Author$
+  -->
+
 <project basedir="." default="build" name="trein-simul">
     <property environment="env"/>
     <property name="debuglevel" value="source,lines,vars"/>
@@ -39,7 +41,7 @@
 
     <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
 
-    <target name="run">
+    <target name="run" depends="build">
         <java classname="be.khlim.trein.gui.Simulator" failonerror="true" fork="yes">
             <classpath refid="trein-simul.classpath"/>
         </java>
