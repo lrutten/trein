@@ -525,7 +525,7 @@ public class Workspace{
 		};
 	}
 
-	public void setPolyLine(PPath ppa, float x1, float y1, float x2, float y2)
+	static public void setPolyLine(PPath ppa, float x1, float y1, float x2, float y2)
 	{
 		float dx;
 		float dy;

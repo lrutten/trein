@@ -341,7 +341,14 @@ public class Run extends JFrame
 		y1 = (float)(c1.getFullBoundsReference().getCenter2D().getY() + c1.getParent().getFullBounds().getOrigin().getY());
 		x2 = (float)(c2.getFullBoundsReference().getCenter2D().getX() + c2.getParent().getFullBounds().getOrigin().getX());
 		y2 = (float)(c2.getFullBoundsReference().getCenter2D().getY() + c2.getParent().getFullBounds().getOrigin().getY());
-		PPath line = PPath.createLine(x1, y1, x2, y2);
+
+		// Dit geeft een rechte lijn
+		//PPath line = PPath.createLine(x1, y1, x2, y2);
+		
+		// Dit geeft een verbinding bestaande uit 3 lijnstukken
+		final PPath line = new PPath();
+    Workspace.setPolyLine(line, x1, y1, x2, y2);
+
 		layer.addChild(line);
 	}
 }

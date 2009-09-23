@@ -14,12 +14,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.io.PushbackInputStream;
+import java.net.URL;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.converters.reflection.PureJavaReflectionProvider;
 
 import be.khlim.trein.modules.*;
 import be.khlim.trein.modules.conf.*;
+
 // imports for creating the GUI
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -69,6 +71,9 @@ public class Simulator extends JFrame
 	private ConfModule train;
 	private ConfModule motherboard;
 	
+	private static final String auteurs = "auteurs: Wouter Rutten, Leo Rutten, Mitch Vanhelden";
+	private static final String datum   = "Simulator IR13 versie $Date$";
+
 	/** constructor
 	 * 		create main window
 	 */
@@ -225,7 +230,7 @@ public class Simulator extends JFrame
 			public void actionPerformed(ActionEvent evt)
 			{
 				// actie
-				JOptionPane.showMessageDialog(main, "Simulator IR13 versie 22/ 9/2009, auteurs: Wouter Rutten, Leo Rutten, Mitch Vanhelden");
+				JOptionPane.showMessageDialog(main, auteurs + ", " + datum);
 
 			}
 		});
@@ -487,16 +492,17 @@ public class Simulator extends JFrame
 	 * 		a list will be shown of all possible modules,
 	 * 		so it is possible to select one of the modules.
 	 */
-	public void makeModules(){
-		
-		frame = new JInternalFrame("modules ", true, false, false, false);
+   public void makeModules()
+   {
+      frame = new JInternalFrame("modules ", true, false, false, false);
 
       URL url = this.getClass().getResource("/figures/logo_IR13.gif");
-		ImageIcon image = new ImageIcon(Toolkit.getDefaultToolkit().getImage(url));
-        frame.setFrameIcon(image);
-		JDesktopPane deskt = new JDesktopPane();
-		frame.setContentPane(deskt);
-		frame.setLayer(2);
+      ImageIcon image = new ImageIcon(Toolkit.getDefaultToolkit().getImage(url));
+      frame.setFrameIcon(image);
+
+      JDesktopPane deskt = new JDesktopPane();
+		  frame.setContentPane(deskt);
+		  frame.setLayer(2);
 
 		XStream xstream = new XStream(new PureJavaReflectionProvider());
 		//aliases for reading the XML files
@@ -538,21 +544,51 @@ public class Simulator extends JFrame
 		
 		deskt.setLayout(new GridLayout(modules.size(),1));
 		
-		///create buttons
-		for(int i = 0; i < modules.size();i++){
-			JButton button;
+   // create buttons
+   for(int i = 0; i < modules.size();i++)
+   {
+      JButton button;
 
-			Object o = modules.get(i).getImageIcon();
+      /*
+      Object o = modules.get(i).getImageIcon();
       System.out.println("o " +o + o.getClass().toString());
 
       Object o2 = new ImageIcon(modules.get(i).getImageIcon());
       System.out.println("o2 " + o2 + o2.getClass().toString());
-      
-			frame.add(button = new JButton((modules.get(i)).getName(), new ImageIcon((modules.get(i)).getImageIcon())));
-			button.addActionListener(new ActionListener()
-			{
-				public void actionPerformed(ActionEvent evt)
-				{	for(int j = 0; j < modules.size(); j++){
+       */
+      // maak een URL die het pad in de jar doet wijzen
+      URL imageURL   = this.getClass().getResource(modules.get(i).getImageIcon());
+      if (imageURL != null)
+      {
+         //System.out.println("url " + imageURL);
+
+         // laad de figuur uit de jar
+         // Dit moet langs de default toolkit lopen
+         ImageIcon icon = new ImageIcon(Toolkit.getDefaultToolkit().getImage(imageURL));
+         
+         // Maak een knop met tekst en icon
+         // De tekst is noodzakelijk als identificatie van de actie
+    		 button = new JButton(modules.get(i).getName(), icon);
+      }
+      else
+      {
+          // De figuur is niet geladen, dan nemen we een tekst
+          System.out.println("resource " + modules.get(i).getImageIcon() + " niet geladen");
+			    button = new JButton(modules.get(i).getName());
+      }
+
+			// Oorspronkelijke regel
+			// Deze werkt niet
+			//button = new JButton((modules.get(i)).getName(), new ImageIcon((modules.get(i)).getImageIcon()));
+			frame.add(button);
+
+      button.addActionListener(new ActionListener()
+      {
+         public void actionPerformed(ActionEvent evt)
+         {
+            System.out.println("knop actie");
+
+            for(int j = 0; j < modules.size(); j++){
 						if (evt.getActionCommand() == modules.get(j).getName()){
 							// stop all active activities, so drawing is possible
 							if(workspaces.size()!=0){

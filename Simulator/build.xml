@@ -54,7 +54,7 @@
       <unjar dest="libclasses" src="lib/xstream-1.2.2.jar"/>
     </target>
 
-    <target name="jar" depends="build-project">
+    <target name="jar" depends="build-project,unjar">
       <jar destfile="site/simulator.jar" manifest="manifest.mf">
         <fileset dir="bin"/>
         <fileset dir=".">
