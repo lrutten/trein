@@ -218,6 +218,18 @@ public class Simulator extends JFrame
 				vertical();
 			}
 		});
+
+		JMenuItem over = new JMenuItem("over Simulator IR13...");
+		over.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent evt)
+			{
+				// actie
+				JOptionPane.showMessageDialog(main, "Simulator IR13 versie 22/ 9/2009, auteurs: Wouter Rutten, Leo Rutten, Mitch Vanhelden");
+
+			}
+		});
+
 		
 				// make menubar
 		JMenuBar menubar = new JMenuBar();
@@ -245,12 +257,15 @@ public class Simulator extends JFrame
 		JMenu beeld = new JMenu("Beeld");
 			beeld.add(rangschik);
 			
+		JMenu help = new JMenu("Help");
+			help.add(over);
 			
 				// add to menubar
 		menubar.add(bestand);
 		menubar.add(bewerken);
 		menubar.add(workspace);
 		menubar.add(beeld);
+		menubar.add(help);
 		
 		//internal frame for buttons
 		frameB = new JInternalFrame("Werkbalk", true, false, false, false);
@@ -528,9 +543,11 @@ public class Simulator extends JFrame
 			JButton button;
 
 			Object o = modules.get(i).getImageIcon();
-                        System.out.println("o " +o);
+      System.out.println("o " +o + o.getClass().toString());
 
-
+      Object o2 = new ImageIcon(modules.get(i).getImageIcon());
+      System.out.println("o2 " + o2 + o2.getClass().toString());
+      
 			frame.add(button = new JButton((modules.get(i)).getName(), new ImageIcon((modules.get(i)).getImageIcon())));
 			button.addActionListener(new ActionListener()
 			{
