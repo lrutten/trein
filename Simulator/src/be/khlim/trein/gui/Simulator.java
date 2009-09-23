@@ -71,8 +71,8 @@ public class Simulator extends JFrame
 	private ConfModule train;
 	private ConfModule motherboard;
 	
-	private static final String auteurs = "auteurs: Wouter Rutten, Leo Rutten, Mitch Vanhelden";
-	private static final String datum   = "Simulator IR13 versie $Date$";
+	private static final String auteurs = "Auteurs: Wouter Rutten, Leo Rutten, Mitch Vanhelden";
+	private static final String datum   = "versie $Date$";
 
 	/** constructor
 	 * 		create main window
@@ -230,7 +230,7 @@ public class Simulator extends JFrame
 			public void actionPerformed(ActionEvent evt)
 			{
 				// actie
-				JOptionPane.showMessageDialog(main, auteurs + ", " + datum);
+				JOptionPane.showMessageDialog(main, auteurs + ", " + datum, "Simulator IR13", JOptionPane.PLAIN_MESSAGE);
 
 			}
 		});
